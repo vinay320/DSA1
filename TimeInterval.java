@@ -8,7 +8,7 @@ public class TimeInterval {
         this.start = start;
         this.end = end;
     }
-    static boolean canAttendMeeting(TimeInterval t1arr[])
+    static boolean canAttendMeeting(TimeInterval[] t1arr)
     {   int a,b;
         for (int i = 0; i <t1arr.length ; i++) {
            a=t1arr[i].start;
@@ -18,14 +18,7 @@ public class TimeInterval {
                 {
                     if(t1arr[j].start>a)
                     {
-                        if (t1arr[j].start<b)
-                        {
-                            return false;
-                        }
-                        else
-                        {
-                            return true;
-                        }
+                        return t1arr[j].start >= b;
                     }
                 }
             }
@@ -35,7 +28,7 @@ public class TimeInterval {
     public static void main(String[] args) {
         Scanner s=new Scanner(System.in);
         int n=s.nextInt();
-        TimeInterval t1arr[]= new TimeInterval[n];
+        TimeInterval[] t1arr= new TimeInterval[n];
         for (int i = 0; i <n ; i++) {
             t1arr[i]=new TimeInterval(s.nextInt(),s.nextInt());
         }
