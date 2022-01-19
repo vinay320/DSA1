@@ -1,3 +1,4 @@
+
 import java.util.Scanner;
 
 public class TimeInterval {
@@ -9,19 +10,26 @@ public class TimeInterval {
         this.end = end;
     }
     static boolean canAttendMeeting(TimeInterval[] t1arr)
-    {   int a,b;
-        for (int i = 0; i <t1arr.length ; i++) {
-           a=t1arr[i].start;
-           b=t1arr[i].end;
-            for (int j = 0; j <t1arr.length ; j++) {
-                if(i!=j)
-                {
-                    if(t1arr[j].start>a)
-                    {
-                        return t1arr[j].start >= b;
-                    }
+    {
+        for (int i = 0; i < t1arr.length ; i++) {
+            for (int j = 0; j < t1arr.length ; j++) {
+
+                    if (t1arr[i].start < t1arr[j].start) {
+                        TimeInterval temp = t1arr[i];
+                        t1arr[i] = t1arr[j];
+                        t1arr[j] = temp;
+
+
                 }
             }
+        }
+        for (int i = 0; i < t1arr.length-1 ; i++) {
+            if(t1arr[i].end>t1arr[i+1].start)
+            {
+                return false;
+            }
+
+
         }
         return true;
     }
@@ -32,7 +40,14 @@ public class TimeInterval {
         for (int i = 0; i <n ; i++) {
             t1arr[i]=new TimeInterval(s.nextInt(),s.nextInt());
         }
-        System.out.println(canAttendMeeting(t1arr));
+        if(canAttendMeeting(t1arr))
+        {
+            System.out.println("Can Attend Meeting");
+        }
+        else
+        {
+            System.out.println("Cannot Attend Meeting");
+        }
 
     }
 }
