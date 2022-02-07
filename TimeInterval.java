@@ -56,7 +56,7 @@ public class TimeInterval {
             b1 = s.nextInt();
             if (a1<b1) {
                 t1arr[i] = new TimeInterval(a1, b1);
-            } 
+            }
         }
         }catch (NullPointerException e)
         {
