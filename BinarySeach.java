@@ -6,9 +6,9 @@ public class BinarySeach {
     {
         int f=0;
         int l=arr.length-1;
-        int mid=(f+l)/2;
+
         while(f<=l)
-        {
+        {  int mid=(f+l)/2;
             if(arr[mid]!=search)
             {
                 if(arr[mid]>search)
@@ -40,7 +40,13 @@ public class BinarySeach {
         System.out.println("Enter element to search");
         int search=s.nextInt();
         int t=(Search(arr,search));
-        System.out.println("Element Found at index "+(t+1));
-
+        if(t!=-1)
+        {
+            System.out.println("Element Found at index " + (t + 1));
+        }
+        else
+        {
+            System.out.println("Not found");
+        }
     }
 }
